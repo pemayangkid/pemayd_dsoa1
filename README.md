@@ -23,11 +23,11 @@ https://github.com/pemayangkid/pemayd_dsoa1.git
 
 ## Part B: Auto Deploy from Git
 1. Added `render.yaml` blueprint
-2. 
-2. Connected GitHub repo to Render
-3. Every push triggers a new build and deploy
-4. [Screenshot of Render deploy logs]
+2. ![blueprint](screenshots/n11.png)
+3. Connected GitHub repo to Render
+4. Every push triggers a new build and deploy
+5. 
 
 ## Live URLs
-- Frontend: https://fe-todo.onrender.com
-- Backend: https://be-todo.onrender.com
+- Frontend: https://fe-todo-02250363.onrender.com
+- Backend: https://be-todo-02250363.onrender.com
