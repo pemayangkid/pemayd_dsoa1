@@ -1,32 +1,67 @@
 # PemaYangkiDorji_02250363_DSO101_A1
 
-## Git repo
+## Git Repository
 https://github.com/pemayangkid/pemayd_dsoa1.git
 
 ## Tech Stack
-- Frontend: React
+- Frontend: React.js
 - Backend: Node.js + Express
 - Database: PostgreSQL
-- Deployment: Docker + Render.com
+- Containerisation: Docker
+- Deployment: Render.com
 
 ## Part A: Docker Hub Deployment
-1. Built backend image: `docker build -t pemayd/be-todo:02250363 ./backend`
-2. Pushed to Docker Hub: `docker push pemayd/be-todo:02250363`
-3. ![docker_be](screenshots/1.png)
-4. Built backend image: `docker build -t pemayd/fe-todo:02250363 ./frontend`
-5. Pushed to Docker Hub: `docker push pemayd/fe-todo:02250363`
-6. ![render_fe](screenshots/n9.png)
-7. Deployed on Render as existing Docker image
-8. ![backend_render1](n1.png)
-9. ![frontend_render1](screenshots/n2.png)
-10. ![frontend_render2](screenshots/n3.png)
+
+### Task 1 – Backend Dockerfile
+Created `backend/Dockerfile`.
+
+### Task 2 – Frontend Dockerfile
+Created `frontend/Dockerfile` using a multi-stage build.
+
+### Task 3 – Build and Push Images
+Built for `linux/amd64` platform (required by Render):
+docker build -t pemayd/be-todo:02250363 ./backend
+docker push pemayd/be-todo:02250363
+
+docker build -t pemayd/fe-todo:02250363 ./frontend
+docker push pemayd/fe-todo:02250363
+
+![docker_be](screenshots/1.png)
+![render_fe](screenshots/n9.png)
+
+### Task 4 – PostgreSQL on Render
+Created a managed PostgreSQL database on Render.
+
+![Render_postgres](screenshots/n13.png)
+
+### Task 5 – Deploy on Render
+Deployed both services using the Docker Hub images.
+
+- Backend: New + → Web Service → Existing image → `pemayd/be-todo:02250363`
+- Frontend: New + → Web Service → Existing image → `pemayd/fe-todo:02250363`
+
+Set environment variables:
+- Backend: `DATABASE_URL`, `PORT=5000`
+- Frontend: `REACT_APP_API_URL=https://be-todo-02250363.onrender.com`
+
+![backend_render1](n1.png)
+![frontend_render1](screenshots/n2.png)
+![frontend_render2](screenshots/n3.png)
+---
 
 ## Part B: Auto Deploy from Git
-1. Added `render.yaml` blueprint
-2. ![blueprint](screenshots/n11.png)
-3. Connected GitHub repo to Render
-4. Every push triggers a new build and deploy
-5. 
+
+### Task 6 – render.yaml Blueprint
+Created `render.yaml` in the repository root
+
+### Task 7 – Connect GitHub to Render Blueprint
+- Render → New + → Blueprint → connected GitHub repo
+- Render detected `render.yaml` and deployed both services automatically
+![blueprint](screenshots/n11.png)
+
+### Task 8 – Auto Deploy Verified
+Every push to GitHub triggers a new build and deployment on Render.
+![auto deploy](screenshots/n12.png)
 
 ## Live URLs
 - Frontend: https://fe-todo-02250363.onrender.com
