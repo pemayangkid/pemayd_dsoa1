@@ -7,6 +7,7 @@ pipeline {
 
     environment {
         JEST_JUNIT_OUTPUT_NAME = 'junit.xml'
+        DOCKER_IMAGE = 'YOUR_DOCKERHUB_USERNAME/todo-app'
     }
 
     stages {
@@ -42,6 +43,16 @@ pipeline {
             }
         }
 
+        stage('Deploy') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-creds') {
+                        def image = docker.build("${DOCKER_IMAGE}:latest", './backend')
+                        image.push()
+                    }
+                }
+            }
+        }
     }
 
     post {
