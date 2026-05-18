@@ -21,6 +21,7 @@ pipeline {
         stage('Install') {
             steps {
                 bat 'npm install'
+                bat 'cd backend && npm install'
             }
         }
 
@@ -36,7 +37,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'junit.xml'
+                    junit 'backend/junit.xml'
                 }
             }
         }

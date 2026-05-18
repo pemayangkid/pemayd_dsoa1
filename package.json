@@ -1,9 +1,10 @@
 {
   "scripts": {
     "start": "node index.js",
-    "test": "cd backend && npm install && npx jest --ci --reporters=default --reporters=jest-junit",
+    "test": "cd backend && npm test",
     "build": "echo No build step needed"
-  },
+  }
+},
   "jest": {
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
