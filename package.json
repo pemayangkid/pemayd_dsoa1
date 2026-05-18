@@ -1,10 +1,11 @@
 {
+  "name": "todo-app",
+  "version": "1.0.0",
   "scripts": {
     "start": "node index.js",
     "test": "cd backend && npm test",
     "build": "echo No build step needed"
-  }
-},
+  },
   "jest": {
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
