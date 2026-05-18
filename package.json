@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --ci --reporters=default --reporters=jest-junit",
+    "build": "echo No build step needed"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/frontend/"
+    ]
+  }
+}
